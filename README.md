@@ -4,20 +4,60 @@ Ce projet Arduino vise à mesurer la concentration de CO2, l'humidité et la tem
 
 ## Contenu du Projet
 
-1. **CapteurTestUno**
+### 1. **CapteurTestUno**
    - Fichier: `CapteurTestUno.ino`
    - Matériel requis: Arduino Uno, capteur de CO2 (mq135), capteur DHT11, écran LCD, LEDs (verte et rouge)
    - But: Tester les capteurs et afficher les données sur l'écran LCD. Les LEDs indiquent les conditions (verte: bonnes conditions, rouge: CO2 trop élevé).
+1. **Capteur DHT (DHT11)**
+   - Connectez le fil rouge à 5V.
+   - Connectez le fil noir à GND.
+   - Connectez le fil jaune à la broche 3 (DHTPIN).
 
-2. **CapteurTestESP8266**
+2. **Capteur de CO2 (MQ135)**
+   - Connectez le fil rouge à 5V.
+   - Connectez le fil noir à GND.
+   - Connectez le fil de sortie analogique à la broche A0 (CO2Pin).
+
+3. **LCD**
+   - Connectez le fil VSS (GND) du LCD à GND.
+   - Connectez le fil VDD (5V) du LCD à 5V.
+   - Connectez le fil V0 (Contraste) à un potentiomètre connecté à 5V et GND.
+   - Connectez les broches RS, RW, et E du LCD aux broches 12, GND, et 11 de l'Arduino respectivement.
+   - Connectez les broches D4 à D7 du LCD aux broches 5, 4, 3, et 2 de l'Arduino respectivement.
+
+4. **LEDs**
+   - Connectez la LED verte à la broche 8.
+   - Connectez la LED rouge à la broche 9.
+
+### 2. **CapteurTestESP8266**
    - Fichier: `CapteurTestESP8266.ino`
    - Matériel requis: ESP8266, capteur de CO2 (mq135), capteur DHT11
    - But: Tester les capteurs et afficher les données sur le moniteur série. Aucun écran LCD ni LED n'est utilisé ici.
 
-3. **ThingSpeakUploader**
+1. **Capteur DHT (DHT11)**
+   - Connectez le fil rouge à 3.3V.
+   - Connectez le fil noir à GND.
+   - Connectez le fil jaune à la broche D3 (DHTPIN).
+
+2. **Capteur de CO2 (MQ135)**
+   - Connectez le fil rouge à 3.3V.
+   - Connectez le fil noir à GND.
+   - Connectez le fil de sortie analogique à la broche A0 (CO2Pin).
+
+### 3. **ThingSpeakUploader**
    - Fichier: `ThingSpeakUploader.ino`
    - Matériel requis: ESP8266, capteur de CO2 (mq135), capteur DHT11
    - But: Mesurer les données et les téléverser sur ThingSpeak. Les données sont stockées dans trois champs (CO2, humidité, température). Un fichier `secrets.h` doit être configuré avec les informations Wi-Fi et ThingSpeak.
+
+1. **Capteur DHT (DHT11)**
+   - Connectez le fil rouge à 3.3V.
+   - Connectez le fil noir à GND.
+   - Connectez le fil jaune à la broche D3 (DHTPIN).
+
+2. **Capteur de CO2 (MQ135)**
+   - Connectez le fil rouge à 3.3V.
+   - Connectez le fil noir à GND.
+   - Connectez le fil de sortie analogique à la broche A0 (CO2Pin).
 
 ## Configuration du Fichier Secrets
 
