@@ -1,12 +1,12 @@
 #include "LiquidCrystal.h"
 #include <DHT.h>
 
-#define DHTPIN 7  // broche du capteur dht
+#define DHTPIN 3  // broche du capteur dht
 #define DHTTYPE DHT11 // type de capteur dht
 
 DHT dht(DHTPIN, DHTTYPE); // declaration du dht
 
-LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // declaration du lcd
+// LiquidCrystal lcd(12, 11, 5, 4, 3, 2); // declaration du lcd
 
 const int CO2Pin = A0;  // pin analogique de lecture du capteur de CO2
 const int greenLED = 8;
@@ -14,13 +14,14 @@ const int redLED = 9;
 
 // variables 
 const int TEMPERATURE_LOWER_LIMIT = 20;
-const int TEMPERATURE_UPPER_LIMIT = 22;
+const int TEMPERATURE_UPPER_LIMIT = 25;
 const int HUMIDITY_LOWER_LIMIT = 30;
 const int HUMIDITY_UPPER_LIMIT = 60;
-const int CO2_UPPER_LIMIT = 1000;
+const int CO2_UPPER_LIMIT = 800;
+const int CO2_LIMIT = 1000;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   dht.begin();
   pinMode(greenLED, OUTPUT);
   pinMode(redLED, OUTPUT);
@@ -81,7 +82,7 @@ void ledEtat(float temperature, int humidity, int ppm) {
   int tauxCO2 = convertToCO2(ppm);
   digitalWrite(greenLED, (temperature >= TEMPERATURE_LOWER_LIMIT && temperature <= TEMPERATURE_UPPER_LIMIT &&
                            humidity >= HUMIDITY_LOWER_LIMIT && humidity <= HUMIDITY_UPPER_LIMIT &&
-                           tauxCO2 <= CO2_UPPER_LIMIT) ? HIGH : LOW);
+                           tauxCO2 <= CO2_LIMIT) ? HIGH : LOW);
   digitalWrite(redLED, (tauxCO2 > CO2_UPPER_LIMIT) ? HIGH : LOW);
 }
 
