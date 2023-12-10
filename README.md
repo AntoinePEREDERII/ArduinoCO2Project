@@ -35,4 +35,4 @@ Assurez-vous de ne pas partager ce fichier avec d'autres personnes.
 
 ## Licence
 
-Ce projet utilise la licence [MIT](LICENSE) - voir le fichier LICENSE pour plus de détails.
+Ce projet utilise la licence [MIT](LICENSE.md) - voir le fichier LICENSE pour plus de détails.
